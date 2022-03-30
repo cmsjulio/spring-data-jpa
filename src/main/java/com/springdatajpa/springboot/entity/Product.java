@@ -1,16 +1,28 @@
 package com.springdatajpa.springboot.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name="products",
+  schema = "ecommerce", //schema=database;
+  uniqueConstraints = {
+        @UniqueConstraint( //não pode haver dois SKUs iguais;
+          name="sku_unique",
+          columnNames = "stock_keeping_unit"
+        )
+  })
 public class Product {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  @Column(name="stock_keeping_unit", nullable = false, length = 256)
   private String sku;
+
+  @Column(nullable = false)
   private String name;
   private String description;
   private BigDecimal price;
