@@ -1,5 +1,8 @@
 package com.springdatajpa.springboot.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -87,7 +90,11 @@ public class Product {
   private BigDecimal price;
   private boolean active;
   private String imageUrl;
+
+  @CreationTimestamp //insere data da criação no atributo automaticamente;
   private LocalDateTime dateCreated;
+
+  @UpdateTimestamp //insere/atualiza data do último update do atributo automaticamente;
   private LocalDateTime lastUpdated;
 
   public Long getId() {
