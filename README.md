@@ -32,3 +32,10 @@ As below:
 ![img_3.png](img_3.png)
 
 All the methods in the SimpleJpaRepositoy class are @Transactional.
+
+### Class location
+The file "SimpleJpaRepository.class" is in the support directory, under External Files of spring-data-jpa library.
+
+There we see a class that implements the JpaRepositoryImplementation interface (which implemented JpaRepository interface).
+
+![img_4.png](img_4.png)
