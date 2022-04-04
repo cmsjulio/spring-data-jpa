@@ -52,4 +52,11 @@ class ProductRepositoryTest {
     System.out.println(product);
   }
 
+  @Test
+  void findByIdMethod(){
+    Long id = 1L;
+
+    Product product = productRepository.findById(id).get();
+  }
+
 }
