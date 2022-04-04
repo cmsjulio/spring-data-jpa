@@ -87,4 +87,15 @@ class ProductRepositoryTest {
 
   }
 
+  @Test
+  void findAllMethod(){
+
+    List<Product> products = productRepository.findAll();
+
+    products.forEach(x-> System.out.println(x.toString()));
+
+    //rodar método e checar output do Hibernated para ver comando SQL gerado no dialeto MYSQL;
+
+  }
+
 }
