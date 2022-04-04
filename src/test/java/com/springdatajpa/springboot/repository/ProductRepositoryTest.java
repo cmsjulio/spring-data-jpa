@@ -106,4 +106,19 @@ class ProductRepositoryTest {
     // dois comandos sao gerados: selecionar por id e depois deletar (no MySQL, pelo Hibernate)
   }
 
+  @Test
+  void deleteMethod(){
+
+    // find an entity by id
+    Long id = 2L;
+    Product product = productRepository.findById(id).get();
+
+    // delete(entity)
+    productRepository.delete(product);
+
+    //delete precisa do antecedente findById e ativa 2 comandos SQL, somando 3;
+    //deleteById usa 2 comandos apenas;
+    //sempre que precisar deletar alguma entidade, utilizar deleteById, por gerar menos comandos SQL;
+  }
+
 }
