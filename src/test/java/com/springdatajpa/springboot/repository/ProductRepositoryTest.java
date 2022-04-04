@@ -57,6 +57,10 @@ class ProductRepositoryTest {
     Long id = 1L;
 
     Product product = productRepository.findById(id).get();
+
+    //observar saída do teste para ver quais são os comandos SQL que o Hibernate gera no dialeto MYSQL.
   }
+
+
 
 }
