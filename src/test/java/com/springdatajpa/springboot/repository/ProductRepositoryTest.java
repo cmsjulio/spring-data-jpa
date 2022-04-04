@@ -98,4 +98,12 @@ class ProductRepositoryTest {
 
   }
 
+  @Test
+  void deleteByIdMethod(){
+    Long id = 1L;
+    productRepository.deleteById(id);
+
+    // dois comandos sao gerados: selecionar por id e depois deletar (no MySQL, pelo Hibernate)
+  }
+
 }
