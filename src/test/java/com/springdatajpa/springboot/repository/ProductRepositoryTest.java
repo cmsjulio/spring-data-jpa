@@ -34,4 +34,22 @@ class ProductRepositoryTest {
     System.out.println(savedObject.toString());
   }
 
+  @Test
+  void updateUsingSaveMethod(){
+    //find or retrieve and entity by ID from the database
+    Long id = 1L;
+    Product product = productRepository.findById(id).get();
+
+    //update entity information
+    product.setName("updated product 1");
+    product.setDescription("updated product 1 description");
+
+    //save updated entity into the database table
+    productRepository.save(product);
+
+    //in this case, because product1 already exists and has a primary key, the save method will
+    //internally call the merge() method to update it instead of saving it.
+    System.out.println(product);
+  }
+
 }
