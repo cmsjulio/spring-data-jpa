@@ -38,7 +38,7 @@ class ProductRepositoryTest {
   @Test
   void updateUsingSaveMethod(){
     //find or retrieve and entity by ID from the database
-    Long id = 1L;
+    Long id = 9L;
     Product product = productRepository.findById(id).get();
 
     //update entity information
@@ -135,6 +135,23 @@ class ProductRepositoryTest {
     productRepository.deleteAll(List.of(product,product2));
     //especificando quais entidades do banco de dados devem ser deletados;
 
+  }
+
+  @Test
+  void countMethod(){
+    long count = productRepository.count();
+    System.out.println(count);
+
+    /*
+    comando de saída:
+
+    Hibernate:
+    select
+        count(*) as col_0_0_
+    from
+        products product0_
+    0
+     */
   }
 
 }
