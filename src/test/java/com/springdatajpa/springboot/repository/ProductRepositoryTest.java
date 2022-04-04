@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -61,6 +62,29 @@ class ProductRepositoryTest {
     //observar saída do teste para ver quais são os comandos SQL que o Hibernate gera no dialeto MYSQL.
   }
 
+  @Test
+  void saveAllMethod(){
 
+    Product product2 = new Product();
+    product2.setName("product 2");
+    product2.setDescription("product 2 descritpion");
+    product2.setSku("100ABCD");
+    product2.setPrice(new BigDecimal(200));
+    product2.setActive(true);
+    product2.setImageUrl("product2.png");
+
+    Product product3 = new Product();
+    product3.setName("product 3");
+    product3.setDescription("product 3 descritpion");
+    product3.setSku("100ABCDE");
+    product3.setPrice(new BigDecimal(300));
+    product3.setActive(true);
+    product3.setImageUrl("product3.png");
+
+    productRepository.saveAll(List.of(product2, product3));
+
+    //pra ver como o método funciona e quais comandos SQL são criados, checar output do teste do método.
+
+  }
 
 }
