@@ -17,7 +17,7 @@ class ProductRepositoryTest {
   private ProductRepository productRepository;
 
   @Test
-  void saveMethod(){
+  void saveMethod() {
     // create product object
     Product product = new Product();
     product.setName("product 1");
@@ -36,7 +36,7 @@ class ProductRepositoryTest {
   }
 
   @Test
-  void updateUsingSaveMethod(){
+  void updateUsingSaveMethod() {
     //find or retrieve and entity by ID from the database
     Long id = 9L;
     Product product = productRepository.findById(id).get();
@@ -54,7 +54,7 @@ class ProductRepositoryTest {
   }
 
   @Test
-  void findByIdMethod(){
+  void findByIdMethod() {
     Long id = 1L;
 
     Product product = productRepository.findById(id).get();
@@ -63,7 +63,7 @@ class ProductRepositoryTest {
   }
 
   @Test
-  void saveAllMethod(){
+  void saveAllMethod() {
 
     Product product2 = new Product();
     product2.setName("product 2");
@@ -88,18 +88,18 @@ class ProductRepositoryTest {
   }
 
   @Test
-  void findAllMethod(){
+  void findAllMethod() {
 
     List<Product> products = productRepository.findAll();
 
-    products.forEach(x-> System.out.println(x.toString()));
+    products.forEach(x -> System.out.println(x.toString()));
 
     //rodar método e checar output do Hibernated para ver comando SQL gerado no dialeto MYSQL;
 
   }
 
   @Test
-  void deleteByIdMethod(){
+  void deleteByIdMethod() {
     Long id = 1L;
     productRepository.deleteById(id);
 
@@ -107,7 +107,7 @@ class ProductRepositoryTest {
   }
 
   @Test
-  void deleteMethod(){
+  void deleteMethod() {
 
     // find an entity by id
     Long id = 2L;
@@ -122,23 +122,23 @@ class ProductRepositoryTest {
   }
 
   @Test
-  void deleteAll(){
+  void deleteAll() {
     productRepository.deleteAll();
     //it first selects all, then it creates one sql statement for each object to be deleted by passing its ID;
   }
 
   @Test
-  void deleteAllFromList(){
+  void deleteAllFromList() {
     Product product = productRepository.findById(5L).get();
     Product product2 = productRepository.findById(6L).get();
 
-    productRepository.deleteAll(List.of(product,product2));
+    productRepository.deleteAll(List.of(product, product2));
     //especificando quais entidades do banco de dados devem ser deletados;
 
   }
 
   @Test
-  void countMethod(){
+  void countMethod() {
     long count = productRepository.count();
     System.out.println(count);
 
@@ -152,6 +152,14 @@ class ProductRepositoryTest {
         products product0_
     0
      */
+  }
+
+  @Test
+  void existsByIdMethod() {
+    Long id = 9L;
+    boolean result = productRepository.existsById(id);
+
+    System.out.println(result);
   }
 
 }
