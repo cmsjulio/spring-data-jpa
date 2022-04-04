@@ -121,4 +121,20 @@ class ProductRepositoryTest {
     //sempre que precisar deletar alguma entidade, utilizar deleteById, por gerar menos comandos SQL;
   }
 
+  @Test
+  void deleteAll(){
+    productRepository.deleteAll();
+    //it first selects all, then it creates one sql statement for each object to be deleted by passing its ID;
+  }
+
+  @Test
+  void deleteAllFromList(){
+    Product product = productRepository.findById(5L).get();
+    Product product2 = productRepository.findById(6L).get();
+
+    productRepository.deleteAll(List.of(product,product2));
+    //especificando quais entidades do banco de dados devem ser deletados;
+
+  }
+
 }
