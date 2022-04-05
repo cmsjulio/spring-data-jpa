@@ -58,4 +58,14 @@ public class QueryMethodsTest {
     productList2.forEach(System.out::println);
 
   }
+
+
+  @Test
+  void findDistinctByName() {
+
+    Product product = productRepository.findDistinctByName("product 2");
+    System.out.println(product.getId());
+    System.out.println(product.getName());
+    System.out.println(product.getDescription());
+  }
 }

@@ -16,4 +16,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
   public List<Product> findByNameAndDescription(String name, String description);
 
+  // se nenhum produto for encotrado, retorna vazio;
+  public Product findDistinctByName (String name);
+
 }
