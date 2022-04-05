@@ -38,4 +38,27 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
   // passamos uma lista de nomes pra retornar uma lista de coincidências
   List<Product> findByNameIn(List<String> names);
 
+  /*
+
+  O Spring Data suporta keywords like 'first' and 'top' to limit the query results.
+
+  Example:
+  findFirstByName() -> add limit 1
+  findTop5BySku()   -> add limit 5
+
+  An optional numeric value can be appended after 'top' or 'first' to limit the maximum number of results
+  to be returned (e.g. findTop3By...)
+
+  If this number is not used then only one entity is returner.
+
+  There's no difference between the keywords 'first' and 'top'.
+
+   */
+
+  //retornar 2 recursos em ordem ascendente por nome
+  List<Product> findFirst2ByOrderByNameAsc();
+
+  //retorna 2 recursos listados por ordem descendente de preço
+  List<Product> findTop2ByOrderByPriceDesc();
+
 }
