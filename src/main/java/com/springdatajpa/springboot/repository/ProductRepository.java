@@ -35,4 +35,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
   List<Product> findByDateCreatedBetween (LocalDateTime startDate, LocalDateTime endDate);
 
+  // passamos uma lista de nomes pra retornar uma lista de coincidências
+  List<Product> findByNameIn(List<String> names);
+
 }

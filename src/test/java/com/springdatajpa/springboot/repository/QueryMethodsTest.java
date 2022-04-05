@@ -166,4 +166,22 @@ public class QueryMethodsTest {
       System.out.println("-----------------");
     });
   }
+
+
+  @Test
+  void findByNameInMethod() {
+
+    // note-se que mesmo o inteiramente maiúsculo retornou resultado
+    List<String> names = List.of("product 1", "product 2", "product 4", "PRODUCT 3");
+
+    List<Product> products = productRepository.findByNameIn(names);
+
+    products.forEach(x -> {
+      System.out.println(x.getId());
+      System.out.println(x.getName());
+      System.out.println(x.getDescription());
+      System.out.println(x.getPrice());
+      System.out.println("-----------------");
+    });
+  }
 }
