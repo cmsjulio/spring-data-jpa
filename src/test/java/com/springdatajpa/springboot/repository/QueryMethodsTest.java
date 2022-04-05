@@ -130,6 +130,22 @@ public class QueryMethodsTest {
       System.out.println(x.getPrice());
       System.out.println("-----------------");
     });
+  }
+
+
+  @Test
+  void findByPriceBetweenMethod() {
+
+    // se passar "product", nao retorna tudo; há divergências.
+    List<Product> products = productRepository.findByPriceBetween(new BigDecimal(100), new BigDecimal(300));
+
+    products.forEach(x->{
+      System.out.println(x.getId());
+      System.out.println(x.getName());
+      System.out.println(x.getDescription());
+      System.out.println(x.getPrice());
+      System.out.println("-----------------");
+    });
 
   }
 }

@@ -29,6 +29,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
   List<Product> findByNameLike(String name);
 
+  // findBetween INCLUSIVE, qual seja: inclui os valores iguals a startPrice e endPrice.
+  List<Product> findByPriceBetween(BigDecimal startPrice, BigDecimal endPrice);
+
 
 
 }
