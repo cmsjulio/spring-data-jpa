@@ -62,7 +62,7 @@ public class QueryMethodsTest {
 
 
   @Test
-  void findDistinctByName() {
+  void findDistinctByNameMethod() {
 
     Product product = productRepository.findDistinctByName("product 2");
     System.out.println(product.getId());
@@ -72,7 +72,7 @@ public class QueryMethodsTest {
 
 
   @Test
-  void findByPriceGreaterThan() {
+  void findByPriceGreaterThanMethod() {
 
     List<Product> products = productRepository.findByPriceGreaterThan(new BigDecimal(100));
 
@@ -88,9 +88,24 @@ public class QueryMethodsTest {
 
 
   @Test
-  void findByPriceLessThan() {
+  void findByPriceLessThanMethod() {
 
     List<Product> products = productRepository.findByPriceLessThan(new BigDecimal(250));
+
+    products.forEach(x->{
+      System.out.println(x.getId());
+      System.out.println(x.getName());
+      System.out.println(x.getDescription());
+      System.out.println(x.getPrice());
+      System.out.println("-----------------");
+    });
+
+  }
+
+  @Test
+  void findByNameContainingMethod() {
+
+    List<Product> products = productRepository.findByNameContaining("product");
 
     products.forEach(x->{
       System.out.println(x.getId());
