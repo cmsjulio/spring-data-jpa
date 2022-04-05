@@ -67,7 +67,7 @@ class ProductRepositoryTest {
 
     Product product2 = new Product();
     product2.setName("product 2");
-    product2.setDescription("product 2 descritpion");
+    product2.setDescription("product 2 description");
     product2.setSku("100ABCD");
     product2.setPrice(new BigDecimal(200));
     product2.setActive(true);
@@ -75,7 +75,7 @@ class ProductRepositoryTest {
 
     Product product3 = new Product();
     product3.setName("product 3");
-    product3.setDescription("product 3 descritpion");
+    product3.setDescription("product 3 description");
     product3.setSku("100ABCDE");
     product3.setPrice(new BigDecimal(300));
     product3.setActive(true);

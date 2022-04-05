@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
@@ -14,7 +15,7 @@ public class QueryMethodsTest {
   private ProductRepository productRepository;
 
   @Test
-  void findByNameMethod(){
+  void findByNameMethod() {
 
     Product product = productRepository.findByName("product 2");
 
@@ -25,7 +26,7 @@ public class QueryMethodsTest {
 
 
   @Test
-  void findByIdMethod(){
+  void findByIdMethod() {
 
     Product product = productRepository.findById(12L).get();
 
@@ -34,4 +35,27 @@ public class QueryMethodsTest {
     System.out.println(product.getDescription());
   }
 
+
+  @Test
+  void findByNameOrDescriptionMethod() {
+
+    // qualquer um dos dois é suficiente
+    List<Product> productList = productRepository.findByNameOrDescription("product 2", "product 3 description");
+    productList.forEach(System.out::println);
+
+  }
+
+
+  @Test
+  void findByNameAndDescriptionMethod() {
+
+    // sem match
+    List<Product> productList = productRepository.findByNameAndDescription("product 2", "product 3 description");
+    productList.forEach(System.out::println);
+
+    // com match
+    List<Product> productList2 = productRepository.findByNameAndDescription("product 2", "product 2 description");
+    productList2.forEach(System.out::println);
+
+  }
 }
