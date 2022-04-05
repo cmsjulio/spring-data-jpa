@@ -65,6 +65,14 @@ class ProductRepositoryTest {
   @Test
   void saveAllMethod() {
 
+    Product product1 = new Product();
+    product1.setName("product 1");
+    product1.setDescription("product 1 description");
+    product1.setSku("100ABC");
+    product1.setPrice(new BigDecimal(100));
+    product1.setActive(true);
+    product1.setImageUrl("product1.png");
+
     Product product2 = new Product();
     product2.setName("product 2");
     product2.setDescription("product 2 description");
@@ -81,7 +89,7 @@ class ProductRepositoryTest {
     product3.setActive(true);
     product3.setImageUrl("product3.png");
 
-    productRepository.saveAll(List.of(product2, product3));
+    productRepository.saveAll(List.of(product1, product2, product3));
 
     //pra ver como o método funciona e quais comandos SQL são criados, checar output do teste do método.
 
