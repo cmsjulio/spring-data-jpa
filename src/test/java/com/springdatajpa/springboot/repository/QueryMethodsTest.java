@@ -116,4 +116,20 @@ public class QueryMethodsTest {
     });
 
   }
+
+  @Test
+  void findByNameLikeMethod() {
+
+    // se passar "product", nao retorna tudo; há divergências.
+    List<Product> products = productRepository.findByNameLike("product 1");
+
+    products.forEach(x->{
+      System.out.println(x.getId());
+      System.out.println(x.getName());
+      System.out.println(x.getDescription());
+      System.out.println(x.getPrice());
+      System.out.println("-----------------");
+    });
+
+  }
 }

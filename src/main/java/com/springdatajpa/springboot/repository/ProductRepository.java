@@ -24,6 +24,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
   List<Product> findByPriceLessThan(BigDecimal price);
 
+  //the same as findByNameLike(String name), until page 2. There is some difference.
   List<Product> findByNameContaining(String name);
+
+  List<Product> findByNameLike(String name);
+
+
 
 }
