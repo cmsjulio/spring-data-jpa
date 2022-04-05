@@ -3,6 +3,7 @@ package com.springdatajpa.springboot.repository;
 import com.springdatajpa.springboot.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,5 +19,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
   // se nenhum produto for encotrado, retorna vazio;
   public Product findDistinctByName (String name);
+
+  List<Product> findByPriceGreaterThan(BigDecimal price);
 
 }
