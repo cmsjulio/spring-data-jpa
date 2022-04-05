@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,14 +77,13 @@ public class QueryMethodsTest {
 
     List<Product> products = productRepository.findByPriceGreaterThan(new BigDecimal(100));
 
-    products.forEach(x->{
+    products.forEach(x -> {
       System.out.println(x.getId());
       System.out.println(x.getName());
       System.out.println(x.getDescription());
       System.out.println(x.getPrice());
       System.out.println("-----------------");
     });
-
   }
 
 
@@ -92,14 +92,13 @@ public class QueryMethodsTest {
 
     List<Product> products = productRepository.findByPriceLessThan(new BigDecimal(250));
 
-    products.forEach(x->{
+    products.forEach(x -> {
       System.out.println(x.getId());
       System.out.println(x.getName());
       System.out.println(x.getDescription());
       System.out.println(x.getPrice());
       System.out.println("-----------------");
     });
-
   }
 
   @Test
@@ -107,14 +106,13 @@ public class QueryMethodsTest {
 
     List<Product> products = productRepository.findByNameContaining("product");
 
-    products.forEach(x->{
+    products.forEach(x -> {
       System.out.println(x.getId());
       System.out.println(x.getName());
       System.out.println(x.getDescription());
       System.out.println(x.getPrice());
       System.out.println("-----------------");
     });
-
   }
 
   @Test
@@ -123,7 +121,7 @@ public class QueryMethodsTest {
     // se passar "product", nao retorna tudo; há divergências.
     List<Product> products = productRepository.findByNameLike("product 1");
 
-    products.forEach(x->{
+    products.forEach(x -> {
       System.out.println(x.getId());
       System.out.println(x.getName());
       System.out.println(x.getDescription());
@@ -136,16 +134,36 @@ public class QueryMethodsTest {
   @Test
   void findByPriceBetweenMethod() {
 
-    // se passar "product", nao retorna tudo; há divergências.
     List<Product> products = productRepository.findByPriceBetween(new BigDecimal(100), new BigDecimal(300));
 
-    products.forEach(x->{
+    products.forEach(x -> {
       System.out.println(x.getId());
       System.out.println(x.getName());
       System.out.println(x.getDescription());
       System.out.println(x.getPrice());
       System.out.println("-----------------");
     });
+  }
 
+
+  @Test
+  void findByDateCreatedBetweenMethod() {
+
+    // startDate
+    LocalDateTime startDate = LocalDateTime.of(2022,04,05,17,00,00);
+
+    // endDate
+    LocalDateTime endDate = LocalDateTime.of(2022,04,05,17,05,02);
+
+
+    List<Product> products = productRepository.findByDateCreatedBetween(startDate, endDate);
+
+    products.forEach(x -> {
+      System.out.println(x.getId());
+      System.out.println(x.getName());
+      System.out.println(x.getDescription());
+      System.out.println(x.getPrice());
+      System.out.println("-----------------");
+    });
   }
 }

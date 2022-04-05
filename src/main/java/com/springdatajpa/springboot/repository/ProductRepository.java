@@ -4,6 +4,7 @@ import com.springdatajpa.springboot.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
   // findBetween INCLUSIVE, qual seja: inclui os valores iguals a startPrice e endPrice.
   List<Product> findByPriceBetween(BigDecimal startPrice, BigDecimal endPrice);
 
-
+  List<Product> findByDateCreatedBetween (LocalDateTime startDate, LocalDateTime endDate);
 
 }

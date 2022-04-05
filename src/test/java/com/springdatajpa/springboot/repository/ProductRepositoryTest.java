@@ -19,16 +19,16 @@ class ProductRepositoryTest {
   @Test
   void saveMethod() {
     // create product object
-    Product product = new Product();
-    product.setName("product 1");
-    product.setDescription("product 1 descritpion");
-    product.setSku("100ABC");
-    product.setPrice(new BigDecimal(100));
-    product.setActive(true);
-    product.setImageUrl("product1.png");
+    Product product1 = new Product();
+    product1.setName("product 4");
+    product1.setDescription("product 4 descritpion");
+    product1.setSku("100ABCDEF");
+    product1.setPrice(new BigDecimal(400));
+    product1.setActive(true);
+    product1.setImageUrl("product4.png");
 
     // save product
-    Product savedObject = productRepository.save(product);
+    Product savedObject = productRepository.save(product1);
 
     // display product information
     System.out.println(savedObject.getId());
